@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZANS - Coming Soon</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0;
+      overflow: hidden;
+      margin: 0;
+      background: linear-gradient(45deg, #00c6ff, #0072ff); /* Initial background */
+      background-size: 400% 400%;
+      animation: backgroundAnimation 20s ease infinite; /* Smooth background transition */
+    }
+
+    /* Smooth background transition */
+    @keyframes backgroundAnimation {
+      0% {
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        background-size: 400% 400%;
+      }
+    
+      50% {
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        background-size: 400% 400%;
+      }
+      75% {
+        background: linear-gradient(45deg, #8e2de2, #4a00e0);
+        background-size: 400% 400%;
+      }
+      100% {
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        background-size: 400% 400%;
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Logo Section */
+    .logo {
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 160px; /* Adjust size as needed */
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .logo img:hover {
+      transform: scale(1.1);
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: slideIn 2s ease-out;
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      color: #dcdcdc;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .countdown {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      animation: fadeIn 2s ease-out;
+      color: #ffcc00;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: #dcdcdc;
+      margin-top: 60px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Button */
+    .subscribe-btn {
+      background: #0072ff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .subscribe-btn:hover {
+      background-color: #00c6ff;
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="zansLOGO.jpg" alt="ZANS Logo"> 
+    </div>
+
+    <h1>ZANS</h1>
+    <p>We're working on something amazing. Stay tuned!</p>
+
+    <div class="countdown">
+      <span>Launching in:</span>
+      <div id="countdown-timer">00d 00h 00m 00s</div>
+    </div>
+
+    <button class="subscribe-btn">Subscribe for Updates</button>
+
+    <div class="footer">
+      <p>&copy; 2024 ZANS. All rights reserved.</p>
+    </div>
+  </div>
+
+  <script>
+    // Countdown Timer
+    function countdown() {
+      const targetDate = new Date("Mar 1, 2025 00:00:00").getTime(); // Updated to March 1, 2025
+      const interval = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          clearInterval(interval);
+          document.getElementById("countdown-timer").innerHTML = "Launched!";
+        } else {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          document.getElementById("countdown-timer").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+        }
+      }, 1000);
+    }
+
+    countdown();
+  </script>
+</body>
+</html>
